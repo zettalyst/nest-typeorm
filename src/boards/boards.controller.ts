@@ -16,45 +16,43 @@ import { BoardService } from './boards.service';
 export class BoardController {
   constructor(private readonly boardService: BoardService) {}
 
-  @Post()
+  @Post('post')
   @HttpCode(201)
   async create(@Body() createBoardRequestDto: CreateBoardRequestDto) {
+    console.log('Call create method in BoardController');
     return await this.boardService.create(createBoardRequestDto);
   }
 
-  @Get()
+  @Get('post')
   async getAll() {
+    console.log('Call getAll method in BoardController');
     return await this.boardService.getAllPosts();
   }
 
-  @Get('/:id')
+  @Get('post/:id')
   async getOne(@Param('id') id: number) {
+    console.log('Call getOne method in BoardController');
     return await this.boardService.getOnePost(id);
   }
 
-  @Put('/:id')
+  @Put('post/:id')
   async updateOne(
     @Param('id') id: number,
     @Body() updateBoardRequestDto: CreateBoardRequestDto,
   ) {
+    console.log('Call updateOne method in BoardController');
     return await this.boardService.updateOnePost(id, updateBoardRequestDto);
   }
 
-  @Delete('/:id')
+  @Delete('post/:id')
   async deleteOne(@Param('id') id: number) {
+    console.log('Call deleteOne method in BoardController');
     return await this.boardService.deleteOnePost(id);
   }
 
-  // Use Param
-  // @Get('search/:keyword')
-  // async searchPostsWithKeyword(@Param('keyword') keyword: string) {
-  //   console.log('test');
-  //   return await this.boardService.searchPosts(keyword);
-  // }
-
   @Get('search')
   async searchPostsWithKeyword(@Query('keyword') keyword: string) {
-    console.log('test');
+    console.log('Call searchPostsWithKeyword method in BoardController');
     return await this.boardService.searchPosts(keyword);
   }
 }
