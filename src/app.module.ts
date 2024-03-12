@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SnakeNamingStrategy } from 'typeorm-naming-strategies';
 import { BoardModule } from './boards/boards.module';
+import { ProfileModule } from './profiles/profiles.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { BoardModule } from './boards/boards.module';
       namingStrategy: new SnakeNamingStrategy(),
     }),
     BoardModule,
+    ProfileModule,
   ],
   controllers: [],
   providers: [],
